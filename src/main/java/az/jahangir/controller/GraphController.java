@@ -160,7 +160,7 @@ public class GraphController {
                 try {
                     double mathY = func.evaluate(mathX);
                     newPoints.add(new Point2D.Double(mathX, mathY));
-                    statusText.append(String.format(" | %s: %.3f", func.getName(), mathY));
+                    statusText.append(String.format(" | %s: %.3f", func.name(), mathY));
                 } catch (Exception ex) {
                     newPoints.add(null);
                 }

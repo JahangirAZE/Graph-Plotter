@@ -60,7 +60,7 @@ public class GraphPanel extends JPanel implements PropertyChangeListener {
     }
 
     private void drawSingleFunction(Graphics2D g2d, int width, int height, double xScale, double yScale, PlottableFunction function) {
-        g2d.setColor(function.getColor());
+        g2d.setColor(function.color());
         g2d.setStroke(new BasicStroke(2f));
         Path2D.Double path = new Path2D.Double();
         boolean firstPoint = true;
@@ -99,7 +99,7 @@ public class GraphPanel extends JPanel implements PropertyChangeListener {
 
         int maxTextWidth = 0;
         for (PlottableFunction func : model.getFunctions()) {
-            int textWidth = fm.stringWidth(func.getName());
+            int textWidth = fm.stringWidth(func.name());
             if (textWidth > maxTextWidth) maxTextWidth = textWidth;
         }
 
@@ -119,8 +119,8 @@ public class GraphPanel extends JPanel implements PropertyChangeListener {
         int currentY = boxY + legendPadding + fm.getAscent();
 
         for (PlottableFunction func : model.getFunctions()) {
-            g2d.setColor(func.getColor());
-            g2d.drawString(func.getName(), textX, currentY);
+            g2d.setColor(func.color());
+            g2d.drawString(func.name(), textX, currentY);
             currentY += fm.getHeight() + lineSpacing;
         }
     }
@@ -145,7 +145,7 @@ public class GraphPanel extends JPanel implements PropertyChangeListener {
             int pixelX = PADDING + (int) ((mathX - model.getXMin()) * xScale);
             int pixelY = height - PADDING - (int) ((mathY - model.getYMin()) * yScale);
 
-            g2d.setColor(func.getColor());
+            g2d.setColor(func.color());
             g2d.fillOval(pixelX - 5, pixelY - 5, 10, 10);
 
             if (i == 0) {

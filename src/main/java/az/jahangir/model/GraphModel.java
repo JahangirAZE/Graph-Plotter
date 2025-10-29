@@ -1,5 +1,6 @@
 package az.jahangir.model;
 
+import lombok.Getter;
 import java.awt.geom.Point2D;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -14,18 +15,20 @@ public class GraphModel {
     public static final String VIEWPORT_PROPERTY = "viewport";
     public static final String FUNCTIONS_PROPERTY = "functions";
 
-    private String rawUserInputFunction;
-    private List<PlottableFunction> functions = new ArrayList<>();
-
     private static final double DEFAULT_MIN_X = -10;
     private static final double DEFAULT_MAX_X = 10;
     private static final double DEFAULT_MIN_Y = -10;
     private static final double DEFAULT_MAX_Y = 10;
 
+    @Getter
+    private String rawUserInputFunction;
+    @Getter
     private double xMin, xMax, yMin, yMax;
+
     private final PropertyChangeSupport support;
 
     private List<Point2D.Double> trackedPoints = new ArrayList<>();
+    private List<PlottableFunction> functions = new ArrayList<>();
 
     public GraphModel() {
         this.support = new PropertyChangeSupport(this);
@@ -34,26 +37,6 @@ public class GraphModel {
 
     public void reset() {
         setViewport(DEFAULT_MIN_X, DEFAULT_MAX_X, DEFAULT_MIN_Y, DEFAULT_MAX_Y);
-    }
-
-    public double getXMin() {
-        return xMin;
-    }
-
-    public double getXMax() {
-        return xMax;
-    }
-
-    public double getYMin() {
-        return yMin;
-    }
-
-    public double getYMax() {
-        return yMax;
-    }
-
-    public String getRawUserInputFunction() {
-        return rawUserInputFunction;
     }
 
     public List<Point2D.Double> getTrackedPoints() {
