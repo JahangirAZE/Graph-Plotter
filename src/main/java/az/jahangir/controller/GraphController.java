@@ -5,28 +5,28 @@ import az.jahangir.model.PlottableFunction;
 import az.jahangir.service.FunctionParserService;
 import az.jahangir.view.MainFrame;
 import net.objecthunter.exp4j.Expression;
-
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Pattern;
-
 import java.util.List;
 
 public class GraphController {
 
+    private static final double ZOOM_FACTOR = 1.1;
+    private static final double H = 1e-7;
+
     private final GraphModel model;
     private final MainFrame view;
-
-    private static final double ZOOM_FACTOR = 1.1;
     private Point lastPanPoint;
 
     private static final Pattern SHORTHAND_POWER_PATTERN = Pattern.compile("\\(\\s*([a-zA-Z]+)\\s*\\^\\s*([0-9.]+)\\s*\\)");
-
-    private static final double H = 1e-7;
 
     public GraphController(GraphModel model, MainFrame view) {
         this.model = model;
@@ -130,7 +130,7 @@ public class GraphController {
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            if (lastPanPoint == null) return;
+            if (Objects.isNull(lastPanPoint)) return;
 
             Point currentPoint = e.getPoint();
 

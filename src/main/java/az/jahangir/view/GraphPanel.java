@@ -3,13 +3,19 @@ package az.jahangir.view;
 import az.jahangir.model.GraphModel;
 import az.jahangir.model.PlottableFunction;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import java.util.List;
 
 public class GraphPanel extends JPanel implements PropertyChangeListener {
